@@ -12,11 +12,12 @@ public class Tea extends Food {
 	
 		public Tea(String color) {
 		super("Tea");
+		dop=color;
 		this.color=color;
 	}
 	
 		public String toString() {
-			return super.toString() + " цветa " + color.toUpperCase() + " ";
+			return super.toString() + " цветa " + dop.toUpperCase() + " ";
 			}
 	public void consume() {
 		System.out.println(this + " съедено");
@@ -25,7 +26,7 @@ public class Tea extends Food {
 	public boolean equals(Object arg0) {
 		if (super.equals(arg0)) {
 		if (!(arg0 instanceof Tea)) return false;
-		return color.equals(((Tea)arg0).color);
+		return dop.equals(((Tea)arg0).dop);
 		} else
 		return false;
 		}

@@ -7,12 +7,13 @@ public class Apple extends Food {
 		return size;
 		}
 	public void setSize(String size) {
-		this.size = size;
+		dop = size;
 		}
 
 	public Apple(String size) {
 		super("Apple");
-		this.size = size;
+		this.size=size;
+		dop = size;
 	}
 	public String toString() {
 		return super.toString() + " размера '" + size.toUpperCase() + "'";
@@ -24,22 +25,22 @@ public class Apple extends Food {
 	public boolean equals(Object arg0) {
 		if (super.equals(arg0)) {
 		if (!(arg0 instanceof Apple)) return false;
-		return size.equals(((Apple)arg0).size);
+		return dop.equals(((Apple)arg0).dop);
 		} else
 		return false;
 		}
 	
 	public Double calculateCalories()       //подсчет калорий
     {
-        if(size.equals("маленькое"))
+        if(size.equals("Little"))
         {
             calories = 10.0;
         }
-        else if(size.equals("среднее"))
+        else if(size.equals("Middle"))
         {
             calories = 61.0;
         }
-        else if(size.equals("большое"))
+        else if(size.equals("Big"))
         {
             calories = 129.0;
         }

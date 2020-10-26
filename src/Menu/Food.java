@@ -4,6 +4,7 @@ public abstract class Food implements Consumable, calories {
 
 	String name = null;
 	Double calories = null;
+	String dop;
     
 	public Food(String name) {
 		this.name = name;

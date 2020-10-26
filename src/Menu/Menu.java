@@ -51,26 +51,49 @@ public class Menu {
 		        return -1;
 		    else return 0;}
 		});
+	 } 
+	int apple1, apple2, apple3, eatcheese, tea1, tea2, tea3;
+     apple1=apple2=apple3=eatcheese=tea1=tea2=tea3=0;
+     for(Food item: breakfast)                            
+     {   
+    	 if(item == null)
+             break;
+    	 if(item.name.equals("Apple"))
+         {
+             if(item.dop.equals("Little"))
+                 apple1++;
+             else if(item.dop.equals("Middle"))
+                 apple2++;
+             else if(item.dop.equals("Big"))
+                apple3++;
+         }
+         if(item.name.equals("Cheese"))
+             eatcheese++;
+         if(item.name.equals("Tea"))
+         {
+        	 if(item.dop.equals("Black"))
+                 tea1++;
+             else if(item.dop.equals("Red"))
+                 tea2++;
+             else if(item.dop.equals("Green"))
+                tea3++;
+         }
+      
+     }
 	 System.out.println("—ъедено на завтрак:");
      for (Food item : breakfast)
      {
          if (item != null)
          {
-             if (item.calculateCalories()==0.0)
-                 continue;
              item.consume();
              System.out.println(" " + item.calculateCalories());
+            
          }
          else
              break;
-     }  
+     } 
+     System.out.println("¬сего съедено: " + apple1 + " маленьких €блок; " +  apple2 + " средних €блок;" + apple3 + " больших €блок;");
+             System.out.println("—ыра -" + eatcheese);
+             System.out.println("¬ыпито ча€: " + tea1 + " чЄрного; " +  tea2 + " красного;" + tea3 + " зелЄного;");
 	}
-	if(!sor)
-		{
-		for (int j=0; j<breakfast.length; j++)
-			 if (breakfast[j]!=null)
-			 breakfast[j].consume();
-			 else break;
-		}
-	}
-	}
+}
