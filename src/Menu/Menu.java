@@ -6,11 +6,12 @@ import java.lang.reflect.Constructor;
 @SuppressWarnings("unused")
 public class Menu {
 
-	@SuppressWarnings("unchecked")
+//	@SuppressWarnings("unchecked")
 	
 	public static void main(String[] args) 
 	{
 		Food[] breakfast = new Food[20];
+		boolean sor=false, cal=false; 
 		int i=0;
 		for (String arg: args) { 
 				String[] parts = arg.split("/");
@@ -25,46 +26,51 @@ public class Menu {
 					}
 					i++;
 				if (parts[0].equals("-sort"))
-					 {    Arrays.sort(breakfast, new Comparator<Object>() {public int compare(Object o1,Object o2) {
-					    if (o1 == null || ((Food)o1).name.length() > ((Food)o2).name.length())
-					    return 1;
-					    if (o2 == null || ((Food)o1).name.length() < ((Food)o2).name.length())
-					        return -1;
-					    else return 0;}
-					});
-					 System.out.println("Съедено на завтрак:");
-			            for (Food item : breakfast)
-			            {
-			                if (item != null)
-			                {
-			                    if (item.calculateCalories()==0.0)
-			                        continue;
-			                    item.consume();
-			                    System.out.println(" " + item.calculateCalories());
-			                }
-			                else
-			                    break;
-			            }
-			        }
+					 sor = true;
 				if (parts[0].equals("-calories"))
-				{                            
-		            double CaloriesCounter = 0.0;
-		            for (Food item : breakfast)
-		            {
-		                if (item != null)
-		                    CaloriesCounter += item.calculateCalories();
-		                else
-		                    break;
-		            }
-		            System.out.println("Общее количество калорий: " + CaloriesCounter);
-
-		        }
-			}
+				cal = true;
+			          }
 			
-	
+		if (cal)
+			{                            
+	            double CaloriesCounter = 0.0;
+	            for (Food item : breakfast)
+	            {
+	                if (item != null)
+	                    CaloriesCounter += item.calculateCalories();
+	                else
+	                    break;
+	            }
+	            System.out.println("Общее количество калорий: " + CaloriesCounter);
+			}
+	if (sor)
+	 {    Arrays.sort(breakfast, new Comparator<Object>() {public int compare(Object o1,Object o2) {
+		    if (o1 == null || ((Food)o1).name.length() > ((Food)o2).name.length())
+		    return 1;
+		    if (o2 == null || ((Food)o1).name.length() < ((Food)o2).name.length())
+		        return -1;
+		    else return 0;}
+		});
+	 System.out.println("Съедено на завтрак:");
+     for (Food item : breakfast)
+     {
+         if (item != null)
+         {
+             if (item.calculateCalories()==0.0)
+                 continue;
+             item.consume();
+             System.out.println(" " + item.calculateCalories());
+         }
+         else
+             break;
+     }  
+	}
+	if(!sor)
+		{
 		for (int j=0; j<breakfast.length; j++)
 			 if (breakfast[j]!=null)
 			 breakfast[j].consume();
 			 else break;
+		}
 	}
-}
+	}
